@@ -15,6 +15,9 @@ public class Food {
     @Column(name = "food_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String name;
     private String category;
+    private String img_url;
 }

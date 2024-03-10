@@ -13,4 +13,5 @@ public class FoodRequest {
 
     private String name;
     private String category;
+    private String img_url;
 }

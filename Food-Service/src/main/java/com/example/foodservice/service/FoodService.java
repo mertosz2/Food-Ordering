@@ -18,8 +18,10 @@ public class FoodService {
         Food food = new Food();
         food.setName(request.getName());
         food.setCategory(request.getCategory());
+        food.setImg_url(request.getImg_url());
         foodRepository.save(food);
         return ResponseEntity.status(201).body("food created !");
-
     }
+
+
 }
