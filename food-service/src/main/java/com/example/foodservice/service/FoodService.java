@@ -25,9 +25,23 @@ public class FoodService {
         return ResponseEntity.status(201).body("food created !");
     }
 
+    public ResponseEntity<List<FoodResponse>> getAllFood(){
+        List<FoodResponse> foodResponseList = foodRepository.findAll()
+                .stream().map(food -> FoodResponse.builder()
+                        .id(food.getId())
+                        .name(food.getName())
+                        .category(food.getCategory())
+                        .img_url(food.getImg_url())
+                        .build()
+                ).toList();
+        return ResponseEntity.status(200).body(foodResponseList);
+    }
+
+
     public ResponseEntity<List<FoodResponse>> findByCategory(String category){
         List<FoodResponse> foodResponseList = foodRepository.findByCategory(category).stream()
                 .map(food -> FoodResponse.builder()
+                        .id(food.getId())
                         .name(food.getName())
                         .category(food.getCategory())
                         .img_url(food.getImg_url())
@@ -40,7 +54,7 @@ public class FoodService {
 
     public ResponseEntity<List<FoodResponse>> getAllFoodByBuffetType(int buffet_Type){
         List<FoodResponse> foodResponseList = foodRepository.findFoodByBuffetType(buffet_Type)
-                .stream().map(food -> FoodResponse.builder()
+                .stream().map(food -> FoodResponse.builder().id(food.getId())
                         .name(food.getName())
                         .category(food.getCategory())
                         .img_url(food.getImg_url())

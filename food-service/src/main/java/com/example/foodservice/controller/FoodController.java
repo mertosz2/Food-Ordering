@@ -30,4 +30,9 @@ public class FoodController {
     public ResponseEntity<List<FoodResponse>> findFoodByBuffetType(@PathVariable int buffet_Type){
         return foodService.getAllFoodByBuffetType(buffet_Type);
     }
+
+    @GetMapping("/AllMenu")
+    public ResponseEntity<List<FoodResponse>> getAllMenu(){
+        return foodService.getAllFood();
+    }
 }
