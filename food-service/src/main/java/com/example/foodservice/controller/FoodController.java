@@ -25,4 +25,9 @@ public class FoodController {
     public ResponseEntity<List<FoodResponse>> findFoodByCategory(@PathVariable String category){
         return foodService.findByCategory(category);
     }
+
+    @GetMapping("/buffet/{buffet_Type}")
+    public ResponseEntity<List<FoodResponse>> findFoodByBuffetType(@PathVariable int buffet_Type){
+        return foodService.getAllFoodByBuffetType(buffet_Type);
+    }
 }
