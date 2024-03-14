@@ -27,12 +27,7 @@ public class FoodService {
 
     public ResponseEntity<List<FoodResponse>> getAllFood(){
         List<FoodResponse> foodResponseList = foodRepository.findAll()
-                .stream().map(food -> FoodResponse.builder()
-                        .id(food.getId())
-                        .name(food.getName())
-                        .category(food.getCategory())
-                        .img_url(food.getImg_url())
-                        .build()
+                .stream().map(this::maptoFoodResponse
                 ).toList();
         return ResponseEntity.status(200).body(foodResponseList);
     }
@@ -40,12 +35,7 @@ public class FoodService {
 
     public ResponseEntity<List<FoodResponse>> findByCategory(String category){
         List<FoodResponse> foodResponseList = foodRepository.findByCategory(category).stream()
-                .map(food -> FoodResponse.builder()
-                        .id(food.getId())
-                        .name(food.getName())
-                        .category(food.getCategory())
-                        .img_url(food.getImg_url())
-                        .build()
+                .map(this::maptoFoodResponse
                 ).toList();
         return ResponseEntity.status(200).body(foodResponseList);
 
@@ -54,12 +44,17 @@ public class FoodService {
 
     public ResponseEntity<List<FoodResponse>> getAllFoodByBuffetType(int buffet_Type){
         List<FoodResponse> foodResponseList = foodRepository.findFoodByBuffetType(buffet_Type)
-                .stream().map(food -> FoodResponse.builder().id(food.getId())
-                        .name(food.getName())
-                        .category(food.getCategory())
-                        .img_url(food.getImg_url())
-                        .build()
+                .stream().map(this::maptoFoodResponse
                         ).toList();
         return ResponseEntity.status(200).body(foodResponseList);
+    }
+
+    public FoodResponse maptoFoodResponse(Food food){
+        return FoodResponse.builder()
+                .id(food.getId())
+                .name(food.getName())
+                .category(food.getCategory())
+                .img_url(food.getImg_url())
+                .build();
     }
 }
