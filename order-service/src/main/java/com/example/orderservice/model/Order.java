@@ -25,7 +25,13 @@ public class Order {
     @Column(name = "timestamp")
     private LocalDateTime dateTime;
 
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
+
     @OneToMany(mappedBy = "order")
     private List<OrderLineItems> orderLineItemsList;
+
+
 
 }
