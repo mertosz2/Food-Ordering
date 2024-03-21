@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -24,7 +25,7 @@ public class Order {
     @Column(name = "timestamp")
     private LocalDateTime dateTime;
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "order")
     private List<OrderLineItems> orderLineItemsList;
 
 }
