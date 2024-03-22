@@ -18,7 +18,7 @@ public class OrderLineItems {
     private UUID id;
 
     private int quantity;
-    private String name;
+    private UUID food_id;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
