@@ -12,4 +12,9 @@ public class OrderController {
     public String test(){
         return "test";
     }
+
+    @GetMapping("/placeOrder")
+    public String testP(){
+        return "authenticated";
+    }
 }
