@@ -21,8 +21,8 @@ public class TableKoyamaService {
         return  "table created";
     }
 
-    public TableKoyama findTableByTableNumber(TableRequest request){
-        TableKoyama tableKoyama = tableKoyamaRepository.findTableKoyamaByTableNumber(request.getTable_number());
+    public TableKoyama findTableByTableNumber(int table_number){
+        TableKoyama tableKoyama = tableKoyamaRepository.findTableKoyamaByTableNumber(table_number);
         return  tableKoyama;
     }
 }
