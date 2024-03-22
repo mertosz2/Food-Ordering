@@ -16,7 +16,7 @@ public class OrderController {
     @PostMapping("/placeOrder")
     public ResponseEntity<String> placeOrder(@RequestBody OrderRequest request){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return
+        return orderService.placeOrder(username, request);
     }
 
 }
