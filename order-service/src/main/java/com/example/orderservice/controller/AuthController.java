@@ -2,8 +2,6 @@ package com.example.orderservice.controller;
 
 import com.example.orderservice.dto.LoginRequest;
 import com.example.orderservice.service.AuthService;
-import com.example.orderservice.service.AuthenticationUserService;
-import jakarta.ws.rs.POST;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
