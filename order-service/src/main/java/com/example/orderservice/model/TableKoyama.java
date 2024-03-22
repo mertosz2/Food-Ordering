@@ -22,7 +22,9 @@ public class TableKoyama {
     @Column(name = "table_id")
     private UUID id;
 
+    @Column(unique = true)
     private int table_number;
+
     private int capacity;
 
     @OneToMany(mappedBy = "tableKoyama")
