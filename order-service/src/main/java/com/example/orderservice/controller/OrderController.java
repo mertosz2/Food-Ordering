@@ -1,18 +1,18 @@
 package com.example.orderservice.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.orderservice.dto.TableRequest;
+import com.example.orderservice.service.TableKoyamaService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
+@RequiredArgsConstructor
 public class OrderController {
-
     @GetMapping
     public String test(){
         return "test";
     }
-
     @GetMapping("/placeOrder")
     public String testP(){
         return "authenticated";
