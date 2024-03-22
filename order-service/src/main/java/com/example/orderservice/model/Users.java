@@ -33,8 +33,9 @@ public class Users implements UserDetails {
     @OneToMany(mappedBy = "users")
     private List<Order> orderList;
 
-    @OneToMany(mappedBy = "users")
-    private List<TableKoyama> tableKoyamaList;
+    @ManyToOne
+    @JoinColumn(name = "table_id")
+    private TableKoyama tableKoyama;
 
     @Enumerated(value =EnumType.STRING)
     private Role role;

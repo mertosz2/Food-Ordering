@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,7 +23,6 @@ public class TableKoyama {
     private int table_number;
     private int capacity;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    Users users;
+    @OneToMany(mappedBy = "tableKoyama")
+    private List<Users> usersList;
 }
