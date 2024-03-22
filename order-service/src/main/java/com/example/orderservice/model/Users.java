@@ -37,7 +37,7 @@ public class Users implements UserDetails {
     @JoinColumn(name = "table_id")
     private TableKoyama tableKoyama;
 
-    @Enumerated(value =EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Role role;
 
     @Override

@@ -35,6 +35,7 @@ public class UsersService {
         return "user created";
     }
 
+
     public String generateUsername(){
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd-HH:mm");

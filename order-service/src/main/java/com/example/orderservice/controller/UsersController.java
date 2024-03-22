@@ -1,7 +1,7 @@
 package com.example.orderservice.controller;
 
-import com.example.orderservice.dto.LoginRequest;
-import com.example.orderservice.service.AuthService;
+import com.example.orderservice.dto.UsersRequest;
+import com.example.orderservice.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
 @RequiredArgsConstructor
-public class AuthController {
-
-    private final AuthService authService;
-
+@RequestMapping("/users")
+public class UsersController {
+    private final UsersService usersService;
     @PostMapping
-    public String login(@RequestBody LoginRequest loginRequest){
-        return authService.authenticate(loginRequest);
+    public String createTable(@RequestBody UsersRequest request){
+        return usersService.createUser(request);
     }
 }

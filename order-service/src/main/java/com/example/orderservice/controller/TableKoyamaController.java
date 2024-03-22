@@ -15,15 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class TableKoyamaController {
 
     private final TableKoyamaService tableKoyamaService;
-    private final UsersService usersService;
 
-//    @PostMapping
-//    public String createTable(@RequestBody TableRequest tableRequest){
-//        return tableKoyamaService.createTable(tableRequest);
-//    }
     @PostMapping
-    public String createTable(@RequestBody UsersRequest request){
-        return usersService.createUser(request);
+    public String createTable(@RequestBody TableRequest tableRequest){
+        return tableKoyamaService.createTable(tableRequest);
     }
 
     @GetMapping
