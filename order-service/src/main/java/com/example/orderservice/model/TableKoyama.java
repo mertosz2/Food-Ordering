@@ -1,5 +1,6 @@
 package com.example.orderservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class TableKoyama {
 
     private int capacity;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tableKoyama")
     private List<Users> usersList;
 }
