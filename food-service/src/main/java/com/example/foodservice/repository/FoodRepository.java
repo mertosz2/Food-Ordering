@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
@@ -15,4 +16,8 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
 
     @Query("SELECT f from Food f WHERE f.buffet_type=:buffet_Type")
     List<Food> findFoodByBuffetType(int buffet_Type);
+
+    @Query("SELECT f from Food f WHERE f.id =:food_id")
+    Optional<Food> findFoodByFoodId(UUID food_id);
+
 }

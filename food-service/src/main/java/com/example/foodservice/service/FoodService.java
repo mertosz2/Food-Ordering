@@ -1,17 +1,21 @@
 package com.example.foodservice.service;
 
 import com.example.foodservice.dto.FoodRequest;
+import com.example.foodservice.dto.FoodIdRequest;
 import com.example.foodservice.dto.FoodResponse;
 import com.example.foodservice.model.Food;
 import com.example.foodservice.repository.FoodRepository;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class FoodService {
 
     private final FoodRepository foodRepository;
@@ -39,7 +43,6 @@ public class FoodService {
                 ).toList();
         return ResponseEntity.status(200).body(foodResponseList);
 
-
     }
 
     public ResponseEntity<List<FoodResponse>> getAllFoodByBuffetType(int buffet_Type){
@@ -47,6 +50,17 @@ public class FoodService {
                 .stream().map(this::maptoFoodResponse
                         ).toList();
         return ResponseEntity.status(200).body(foodResponseList);
+    }
+
+    public List<FoodResponse> findFoodByFoodId(FoodRequest request){
+        List<UUID> uuid = request.getFoodIdRequestList().stream().map(FoodIdRequest::getFood_id).toList();
+        List<FoodResponse> foodResponseList = new ArrayList<>();
+        for (UUID food_id : uuid){
+            Food food = foodRepository.findFoodByFoodId(food_id).orElseThrow();
+            foodResponseList.add(maptoFoodResponse(food));
+        }
+        return  foodResponseList;
+
     }
 
     public FoodResponse maptoFoodResponse(Food food){

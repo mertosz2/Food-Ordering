@@ -11,10 +11,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FoodResponse {
-
-    private UUID id;
-    private String name;
-    private String category;
-    private String img_url;
+public class FoodIdRequest {
+    private UUID food_id;
 }

@@ -1,4 +1,4 @@
-package com.example.foodservice.dto;
+package com.example.orderservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,14 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class FoodRequest {
-
     private List<FoodIdRequest> foodIdRequestList;
-    private String name;
-    private String category;
-    private String img_url;
-    private int buffet_Type;
 }

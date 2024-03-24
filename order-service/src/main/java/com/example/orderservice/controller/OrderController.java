@@ -1,8 +1,5 @@
 package com.example.orderservice.controller;
-import com.example.orderservice.dto.FoodResponse;
-import com.example.orderservice.dto.OrderRequest;
-import com.example.orderservice.model.Order;
-import com.example.orderservice.model.OrderLineItems;
+import com.example.orderservice.dto.*;
 import com.example.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +22,11 @@ public class OrderController {
         return orderService.placeOrder(username, request);
     }
 
-    @GetMapping
-    public List<FoodResponse> findAll(){
+    @GetMapping("/")
+    public List<OrderInfo> findAll(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return orderService.findAllOrderFromUserId(username);
+        return orderService.findAllOrderFromUser(username);
     }
+
 
 }
