@@ -22,7 +22,7 @@ public class OrderController {
         return orderService.placeOrder(username, request);
     }
 
-    @GetMapping("/")
+    @GetMapping("/orderList")
     public List<OrderInfo> findAll(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return orderService.findAllOrderFromUser(username);
